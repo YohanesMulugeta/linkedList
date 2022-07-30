@@ -12,6 +12,13 @@ class LInkedList {
     this.tail = this.head;
     this.length = 1;
   }
+
+  push(value) {
+    const newNode = new Node(value);
+    this.tail.next = newNode;
+    this.tail = newNode;
+    this.length++;
+  }
 }
 
 let myLinkedList = new LInkedList(4);
