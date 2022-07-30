@@ -44,6 +44,7 @@ class LInkedList {
   shift() {
     if (!this.head) return undefined;
 
+    let temp = this.head;
     this.head = this.head.next;
 
     if (this.length === 1) {
@@ -51,6 +52,7 @@ class LInkedList {
     }
 
     this.length--;
+    temp = null; // this will remove the pointer to the now head to allow js to make cleanup
 
     return this;
   }
@@ -86,16 +88,32 @@ class LInkedList {
 
     return this;
   }
+
+  //   ---------------------------------------------------------------------------- GETTING item from the linked list
+  get(index) {
+    // ---------------- guard key for queries beyond the boundaries
+    if (index >= this.length || index < 0) return undefined;
+
+    let temp = this.head;
+
+    for (let i = 0; i < index; i++) {
+      temp = temp.next;
+    }
+
+    return temp;
+  }
 }
 
 let myLinkedList = new LInkedList(4);
 
-myLinkedList.push(5);
-myLinkedList.push(7);
-
-// myLinkedList.pop();
-myLinkedList.unshift(3);
-myLinkedList.shift();
+// myLinkedList.push(5);
+// myLinkedList.push(7);
 // myLinkedList.pop();
 
-console.log(myLinkedList);
+// myLinkedList.unshift(3);
+// myLinkedList.shift();
+// myLinkedList.shift();
+// myLinkedList.pop();
+
+console.log(myLinkedList.get(1));
+// console.log(myLinkedList);
