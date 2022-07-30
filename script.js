@@ -15,7 +15,8 @@ class LInkedList {
 
   push(value) {
     const newNode = new Node(value);
-    this.tail.next = newNode;
+    if (this.length === 0) this.head = newNode;
+    else this.tail.next = newNode;
     this.tail = newNode;
     this.length++;
   }
