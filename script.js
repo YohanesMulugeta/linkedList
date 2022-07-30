@@ -89,7 +89,7 @@ class LInkedList {
     return this;
   }
 
-  //   ---------------------------------------------------------------------------- GETTING item from the linked list
+  //   ---------------------------------------------------------------------------- GETTING item from the linked list (zero based)
   get(index) {
     // ---------------- guard key for queries beyond the boundaries
     if (index >= this.length || index < 0) return undefined;
@@ -102,18 +102,28 @@ class LInkedList {
 
     return temp;
   }
+
+  //   -------------------------------------------------------------------------------  SETTING a value at provided index
+
+  set(index, value) {
+    if (index >= this.length || index < 0) return false;
+
+    this.get(index).value = value;
+
+    return true;
+  }
 }
 
 let myLinkedList = new LInkedList(4);
 
-// myLinkedList.push(5);
-// myLinkedList.push(7);
+myLinkedList.push(5);
+myLinkedList.push(7);
 // myLinkedList.pop();
 
 // myLinkedList.unshift(3);
 // myLinkedList.shift();
-// myLinkedList.shift();
+myLinkedList.shift();
 // myLinkedList.pop();
 
-console.log(myLinkedList.get(1));
+console.log(myLinkedList.set(0, 28));
 // console.log(myLinkedList);
